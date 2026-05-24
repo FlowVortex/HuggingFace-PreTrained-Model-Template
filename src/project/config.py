@@ -1,10 +1,9 @@
 """
-通常来说编写`Config`是我们实现预训练模型的第一步，
-因为对于Huggingface中`transformers`库来说，
-它需要一个具体的`Config`类来构建模型。
-我们在创建模型的时候往往都只输入一个具体的Config进行各种参数的适配等。
-在这里对于一个模型我们通常会创建两个`Config`类，
-一个用于模型的构建，一个用于模型的训练。
+Generally speaking, writing a `Config` is the first step in implementing a pre-trained model,
+because the `transformers` library in Huggingface requires a specific `Config` class to build the model.
+
+When creating a model, we usually only input a specific `Config` to adapt various parameters, etc.
+Here, for a model, we typically create two `Config` classes: one for model building and one for model training.
 """
 
 from dataclasses import dataclass
