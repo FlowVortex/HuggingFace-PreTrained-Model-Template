@@ -1,6 +1,9 @@
 # Hugging Face Pre-trained Model Template <img width="15%" align="right" src="https://github.com/wwhenxuan/S2Generator/blob/main/docs/source/_static/S2Generator_logo.png?raw=true">
 
-A modular, production-ready template for building Hugging Face Transformers-compatible pre-trained models. This template follows Hugging Face ecosystem conventions and provides a structured foundation for model development, training, and deployment.
+A modular, production-ready template for building Hugging Face Transformers-compatible pre-trained models.
+
+> [!TIP]
+> This is currently an early version, intended for internal use by the FlowVotrex team.
 
 ## YourModel Structure
 
