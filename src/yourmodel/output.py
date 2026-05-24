@@ -44,10 +44,10 @@ class EncoderOutput(ModelOutput):
 
 
 @dataclass
-class ProjectOutput(ModelOutput):
+class YourModelOutput(ModelOutput):
     """
     The model's final output.
-    Here, `Project` refers to the name of the specific model.
+    Here, `YourModel` refers to the name of the specific model.
     We will name this class after the specific model.
 
     This class will return the model's specific output and the loss during training.

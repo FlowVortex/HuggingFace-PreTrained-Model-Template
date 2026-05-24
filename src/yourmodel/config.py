@@ -11,7 +11,7 @@ from transformers.configuration_utils import PretrainedConfig
 
 
 @dataclass
-class ProjectConfig(PretrainedConfig):
+class YourModelConfig(PretrainedConfig):
     """
     The Huggingface transformer-style pre-trained model config for `xxx` model
     """
@@ -20,7 +20,7 @@ class ProjectConfig(PretrainedConfig):
 
 
 @dataclass
-class ProjectTrainingConfig(PretrainedConfig):
+class YourModelTrainingConfig(PretrainedConfig):
     """
     The training configuration for `xxx` model
     """

@@ -7,7 +7,7 @@ __all__ = []
 
 
 # Here we typically import the following modules: config, specific models, pipeline, and trainer for training models.
-# from .config import ProjectConfig, ProjectTrainingConfig
-# from .model import ProjectModel
+# from .config import YourModelConfig, YourModelTrainingConfig
+# from .model import YourModelModel
 # from .pipeline import ...
 # from .trainer import ...

@@ -18,17 +18,17 @@ from torch.nn import functional as F
 from einops import rearrange, repeat
 from transformers.modeling_utils import PreTrainedModel
 
-from project.config import ProjectConfig
-from project.output import ProjectOutput
+from project.config import YourModelConfig
+from project.output import YourModelOutput
 
 
-class ProjectModel(PreTrainedModel):
-    config_class = ProjectConfig  # type: ignore[assignment]
+class YourModelModel(PreTrainedModel):
+    config_class = YourModelConfig  # type: ignore[assignment]
     # _supports_long_horizon: bool = True
     # _supports_sdpa: bool = True
     # _supports_flash_attn_2 = True
 
-    def __init__(self, config: ProjectConfig) -> None:
+    def __init__(self, config: YourModelConfig) -> None:
         super().__init__(config)
 
         # This is where you create the model's internal modules and perform initialization.
@@ -67,5 +67,5 @@ class ProjectModel(PreTrainedModel):
         To simplify the downstream model training process, we usually calculate the model loss during the forward propagation of the pre-trained model.
         """
 
-    def forward(self, *args, **kwargs) -> ProjectOutput:
+    def forward(self, *args, **kwargs) -> YourModelOutput:
         pass
