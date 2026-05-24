@@ -1,3 +1,12 @@
+"""
+We typically create an `output.py` file to implement the model output class.
+This class usually inherits from the `ModelOutput` class in Huggingface.
+Generally, we can choose to write only the Output for the entire model.
+
+However, to further standardize the input and output within the model framework,
+it is recommended to define the input and output content for the model's backbone and multiple model layers as well.
+"""
+
 from dataclasses import dataclass
 
 import torch
@@ -7,7 +16,7 @@ from transformers.file_utils import ModelOutput
 @dataclass
 class AttentionOutput(ModelOutput):
     """
-    Transformer模型每一层中注意力机制的输出
+    The output of the attention mechanism in each layer of the Transformer model
     """
 
     hidden_states: torch.Tensor | None = None
@@ -17,7 +26,7 @@ class AttentionOutput(ModelOutput):
 @dataclass
 class EncoderBlockOutput(ModelOutput):
     """
-    Transformer模型每一层中编码器模型的输出
+    The output of the encoder model in each layer of the Transformer model
     """
 
     hidden_states: torch.Tensor | None = None
@@ -27,7 +36,7 @@ class EncoderBlockOutput(ModelOutput):
 @dataclass
 class EncoderOutput(ModelOutput):
     """
-    Transformer模型整个编码器的backbone的输出
+    The output of the entire encoder backbone of the Transformer model.
     """
 
     last_hidden_state: torch.Tensor | None = None
@@ -37,10 +46,11 @@ class EncoderOutput(ModelOutput):
 @dataclass
 class ProjectOutput(ModelOutput):
     """
-    模型最终的输出
-    这里的`Project`是指具体模型的名字
-    我们会根据具体模型的名字来命名这个类
-    这个类将会返回模型具体的一些输出内容以及训练过程中的损失
+    The model's final output.
+    Here, `Project` refers to the name of the specific model.
+    We will name this class after the specific model.
+
+    This class will return the model's specific output and the loss during training.
     """
 
     loss: torch.Tensor | None = None
