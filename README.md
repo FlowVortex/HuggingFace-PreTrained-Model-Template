@@ -1,8 +1,8 @@
-# Hugging Face Pre-trained Model Template
+# Hugging Face Pre-trained Model Template <img width="12%" align="right" src="https://github.com/wwhenxuan/S2Generator/blob/main/docs/source/_static/S2Generator_logo.png?raw=true">
 
 A modular, production-ready template for building Hugging Face Transformers-compatible pre-trained models. This template follows Hugging Face ecosystem conventions and provides a structured foundation for model development, training, and deployment.
 
-## Project Structure
+## YourModel Structure
 
 ```
 ├── notebooks/
@@ -10,7 +10,7 @@ A modular, production-ready template for building Hugging Face Transformers-comp
 ├── scripts/
 │   └── pre-training.sh         # Shell script for launching pre-training jobs
 ├── src/
-│   ├── project/                # Main project package
+│   ├── yourmodel/              # Main project package
 │   │   ├── __init__.py         # Package initialization and versioning
 │   │   ├── config.py           # Model and training configuration classes
 │   │   ├── dataset.py          # Custom dataset implementations
@@ -27,25 +27,25 @@ A modular, production-ready template for building Hugging Face Transformers-comp
 
 ## Core Modules
 
-### `src/project/__init__.py`
+### `src/yourmodel/__init__.py`
 - Defines the package version (`__version__ = "0.0.1"`)
 - Exposes public API through `__all__` list
 - Imports key classes (config, model, pipeline, trainer) for easy access
 
-### `src/project/config.py`
+### `src/yourmodel/config.py`
 - First step in implementing a Hugging Face model
 - Contains two primary configuration classes:
-  - `ProjectConfig`: Inherits from `PretrainedConfig`, defines model architecture parameters
-  - `ProjectTrainingConfig`: Defines training-specific hyperparameters
+  - `YourModelConfig`: Inherits from `PretrainedConfig`, defines model architecture parameters
+  - `YourModelTrainingConfig`: Defines training-specific hyperparameters
 - Fully compatible with Hugging Face Transformers configuration system
 
-### `src/project/dataset.py`
+### `src/yourmodel/dataset.py`
 - Implements `Dataset` and `IterableDataset` classes for training, fine-tuning, and evaluation
 - Handles data parsing, tokenization, batching, and augmentation
 - Follows Hugging Face Datasets API standards
 - Compatible with Hugging Face Trainer API and standard PyTorch DataLoader
 
-### `src/project/model.py`
+### `src/yourmodel/model.py`
 - Implements the core model architecture
 - Inherits from `PreTrainedModel` for full Hugging Face compatibility
 - Includes weight initialization (`_init_weights`)
@@ -54,16 +54,16 @@ A modular, production-ready template for building Hugging Face Transformers-comp
 - Returns typed outputs defined in `output.py`
 - For complex models, layer implementations should be moved to a separate `layers.py` file
 
-### `src/project/output.py`
+### `src/yourmodel/output.py`
 - Defines strongly-typed output classes inheriting from `ModelOutput`
 - Standardizes outputs across different model components:
   - `AttentionOutput`: Output of individual attention layers
   - `EncoderBlockOutput`: Output of individual encoder blocks
   - `EncoderOutput`: Output of the entire encoder backbone
-  - `ProjectOutput`: Final model output including loss and hidden states
+  - `YourModelOutput`: Final model output including loss and hidden states
 - Improves code readability and type safety
 
-### `src/project/pipeline.py`
+### `src/yourmodel/pipeline.py`
 - Provides high-level, user-friendly inference interfaces
 - Encapsulates the complete model usage workflow:
   - Model loading from Hugging Face Hub or local files
@@ -74,7 +74,7 @@ A modular, production-ready template for building Hugging Face Transformers-comp
 - Serves as the primary entry point for end-users
 - Maintains compatibility with Hugging Face pipeline conventions
 
-### `src/project/trainer.py`
+### `src/yourmodel/trainer.py`
 - Contains all training logic
 - Supports multiple training paradigms:
   - Supervised training
@@ -86,7 +86,7 @@ A modular, production-ready template for building Hugging Face Transformers-comp
   2. PyTorch Lightning-based (high-level interface)
   3. Hugging Face Trainer-based (best ecosystem integration)
 
-### `src/project/utils.py`
+### `src/yourmodel/utils.py`
 - Reusable helper functions used across the codebase
 - Includes:
   - Visualization tools
@@ -101,59 +101,6 @@ A modular, production-ready template for building Hugging Face Transformers-comp
 - Parses command-line arguments
 - Initializes config, model, dataset, and trainer
 - Executes the training loop
-
-## Quick Start
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/your-project.git
-cd your-project
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Install the package in editable mode
-pip install -e .
-```
-
-### Basic Inference
-
-```python
-from project import YourModelPipeline
-
-# Load the pipeline
-pipeline = YourModelPipeline.from_pretrained("your-username/your-model")
-
-# Run inference
-result = pipeline("Your input text here")
-print(result)
-```
-
-## Training
-
-### Pre-training
-
-```bash
-# Launch pre-training using the provided script
-bash scripts/pre-training.sh
-```
-
-The `pre-training.sh` script calls `main.py` with appropriate arguments. You can modify the script to adjust training parameters or specify different configuration files.
-
-### Fine-tuning
-
-```bash
-# Fine-tune on your custom dataset
-python src/main.py \
-  --do_finetune \
-  --model_name_or_path your-username/your-model \
-  --dataset_path ./data/your-dataset \
-  --output_dir ./finetune-output \
-  --num_train_epochs 3 \
-  --per_device_train_batch_size 16
-```
 
 ## Development Guide
 
@@ -177,4 +124,4 @@ python src/main.py \
 2. Implement the training loop and any custom logic
 3. Add command-line arguments in `main.py` to select the new trainer
 
-**Note:** Replace all instances of `Project`, `project`, and `Your` with your actual project name throughout the codebase and documentation.
+**Note:** Replace all instances of `YourModel`, `yourmodel`, and `Your` with your actual project name throughout the codebase and documentation.
